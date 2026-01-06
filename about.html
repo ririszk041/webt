@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ABOUT US</title>
+	<style>
+		body {
+	      font-family: 'Playfair Display', serif;
+	      margin: 0;
+	      color: #333;
+	     	line-height: 1.8;
+	      background-image: url(image/bunga.jpeg);
+	      background-repeat: no-repeat;
+	     	background-size: cover;
+    }
+		.nav {
+				background: rgba(255,255,255,0.35);
+	      backdrop-filter: blur(4px);
+	      padding: 20px;
+	      text-align: left;
+	      font-size: 20px;
+	    	position: relative;
+		}
+		.nav a {
+      	color: white;
+      	margin: 0 10px;
+      	text-decoration: none;
+      	font-weight: bold;
+		}
+		.nav a:hover{
+ 	 			background:white;
+  			color: pink;
+  			font-size: 20px;
+		}
+		.menu-icon{
+  			font-size:26px;
+  			color:white;
+ 				display:none;
+  			cursor:pointer;
+		}
+		/* RESPONSIVE */
+		@media (max-width: 768px){
+  		.menu-icon{
+    		display:block;
+  		}
+  		.nav-links{
+    		display:none;
+    		background: pink;
+ 		 }
+  		.nav-links a{
+    		display:block;
+    		/*border-top:1px solid #555;*/
+  			}
+		}
+		.about-container {
+  			max-width: 700px;
+  			margin: 50px auto;
+  			background: rgba(255, 228, 235, 0.9);
+  			padding: 30px;
+  			border-radius: 20px;
+  			text-align: center;
+		}
+		.about-container img {
+  			width: 250px;
+  			height: 250px;
+  			margin: 20px 0;
+  			border-radius: 30px;
+  			object-fit: cover;     
+		}
+		.about-container h1 {
+  			color: white;
+  			font-family: 'Playfair Display', serif;
+		}
+		.about-container p {
+  			background: none;
+  			color: #F4A6B8;
+  			font-size: 20px;
+  	}
+		
+     /* FOOTER */
+     .footer {
+        text-align: center;
+        padding: 30px;
+        background: rgba(255,255,255,0.35);
+        color: white;
+        backdrop-filter: blur(4px);
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5em;
+        }
+    }
+    .clock {
+    	 position: absolute;
+		   top: 20px;
+		   right: 30px;
+		   font-size: 15px;          /* DIPERKECIL */
+		   padding: 4px 12px;        /* DIPERKECIL */
+		   border-radius: 15px;
+		   background: rgba(255,255,255,0.45);
+		   color: white;
+		   font-weight: 500;
+    }
+	</style>
+</head>
+<body>
+  <!-- NAV -->
+  <div class="nav">
+  	<span class="menu-icon" onclick="toggleMenu()">☰</span>
+  	<div class="nav-links" id="navLinks">
+    <a href="index.html" align="center">Home</a>
+    <a href="artikel1.html" align="center">Article Gallery</a>
+    <a href="about.html" align="center">About Us</a>
+    <a href="contact.html" align="center">Contact</a>
+	</div>
+	<div class="clock" id="clock"></div>
+  </div>
+  <!-- ABOUT US -->
+  <div class="about-container">
+    <h1>This Is About Me</h1>
+    <img src="image/artrizka.jpg" alt="Rizka">
+    <p>
+      Hello friend! My name is <b>Rizka</b>. I'm a biggest fan of Korean idol, my favoo idol or boy group is NCT. I have a lot of biases. I also really enjoy listening music from different genres, as long as the song is easy listening, you know?🧏‍♀️ On this website, I discuss many articles about artist and singers. I hope you enjoy them and can learn various facts.🩷
+    </p>
+  </div>
+  <!-- FOOTER -->
+  <div class="footer">
+    © CopyRight [Rizka Nazita Trianindhita, 251011701100, 01SIPF016] - 2025
+  </div>
+<script>
+function toggleMenu(){
+  var menu = document.getElementById("navLinks");
+  if(menu.style.display === "block"){
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "block";
+  }
+}
+
+         function updateClock() {
+            const clock = document.getElementById("clock");
+            const now = new Date();
+
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            const date = now.toLocaleDateString('en-US', options);
+            const time = now.toLocaleTimeString('en-US');
+
+            clock.innerHTML = date + " ⏳ " + time;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+</script>
+</body>
+</html>

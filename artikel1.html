@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Daftar Artikel</title>
+
+<style>
+body{
+  font-family: 'Playfair Display', serif;
+  margin:0;
+  background-image: url(image/bunga.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* NAVIGASI */
+.nav {
+        background: rgba(255,255,255,0.35);
+        backdrop-filter: blur(4px);
+        padding: 20px;
+        text-align: left;
+        font-size: 20px;
+        position: relative;
+}
+.nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+        font-weight: bold;
+}
+.nav a:hover{
+        background:white;
+        color: pink;
+        font-size: 20px;
+}
+.menu-icon{
+        font-size:26px;
+        color:white;
+        display:none;
+        cursor:pointer;
+}
+/* RESPONSIVE */
+@media (max-width: 768px){
+  .menu-icon{
+      display:block;
+}
+  .nav-links{
+      display:none;
+      background: pink;
+}
+  .nav-links a{
+      display:block;
+      /*border-top:1px solid #555;*/
+    }
+}
+
+/* GRID ARTIKEL */
+.container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap:25px;
+  padding:40px;
+}
+
+/* CARD */
+.card{
+  background:white;
+  border-radius:12px;
+  box-shadow:0 4px 8px rgba(0,0,0,.1);
+  cursor:pointer;
+  text-align:center;
+  padding:15px;
+}
+.card img{
+  width:100%;
+  border-radius:10px;
+}
+.card h3{
+  margin:10px 0 5px;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+.popup-box{
+  width:360px;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+}
+.popup-box img{
+  width:100%;
+  border-radius:10px;
+}
+button{
+  margin-top:15px;
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  background:pink;
+  color:white;
+  cursor:pointer;
+}
+.clock {
+       position: absolute;
+       top: 17px;
+       right: 30px;
+       font-size: 15px;       
+       padding: 4px 12px; 
+       border-radius: 15px;
+       background: rgba(255,255,255,0.45);
+       color: white;
+       font-weight: 500;
+    }
+.footer {
+  text-align: center;
+  padding: 30px;
+  background: rgba(255,255,255,0.35);
+  color: white;
+  backdrop-filter: blur(4px);
+}
+@media (max-width: 768px) {
+     .hero-title {
+         font-size: 2.5em;
+     }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <span class="menu-icon" onclick="toggleMenu()">☰</span>
+  <div class="nav-links" id="navLinks">
+  <a href="index.html" align="center">Home</a>
+  <a href="artikel1.html" align="center">Article Gallery</a>
+  <a href="about.html" align="center">About Us</a>
+  <a href="contact.html" align="center">Contact</a>
+</div>
+  <div class="clock" id="clock"></div>
+</div>
+
+<!-- DAFTAR ARTIKEL -->
+<div class="container">
+
+  <!-- ARTIKEL 1 -->
+  <div class="card"
+    onclick="openPopup(
+      'JEONG JAEHYUN',
+      'image/jj.jpg',
+      'Profil singkat idol Jaehyun NCT.',
+      'jaehyun.html'
+    )">
+    <img src="image/cooljeje.jpg">
+    <h3>JEONG JAEHYUN</h3>
+    <p>Klik untuk preview</p>
+  </div>
+
+  <!-- ARTIKEL 2 -->
+  <div class="card"
+    onclick="openPopup(
+      'KIM JENNIE',
+      'image/jennie.jpg.jpeg',
+      'Jennie is Human Channel.',
+      'jenniekim.html'
+    )">
+    <img src="image/rr.png">
+    <h3>KIM JENNIE</h3>
+    <p>Klik untuk preview</p>
+  </div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <img id="popupImg">
+    <h3 id="popupTitle"></h3>
+    <p id="popupText"></p>
+
+    <button id="popupBtn">Baca Selengkapnya</button><br><br>
+    <button onclick="closePopup()">Tutup</button>
+  </div>
+</div>
+<div class="footer">
+  © CopyRight [Rizka Nazita Trianindhita, 251011701100, 01SIPF016] - 2025
+</div>
+<!-- JAVASCRIPT -->
+<script>
+  function toggleMenu(){
+  var menu = document.getElementById("navLinks");
+  if(menu.style.display === "block"){
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "block";
+  }
+}
+function openPopup(title, img, text, link){
+  document.getElementById("popupTitle").innerText = title;
+  document.getElementById("popupImg").src = img;
+  document.getElementById("popupText").innerText = text;
+  document.getElementById("popupBtn").onclick = function(){
+    window.location.href = link;
+  };
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display = "none";
+}
+        function updateClock() {
+            const clock = document.getElementById("clock");
+            const now = new Date();
+
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            const date = now.toLocaleDateString('en-US', options);
+            const time = now.toLocaleTimeString('en-US');
+
+            clock.innerHTML = date + " ⏳ " + time;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+</script>
+
+</body>
+</html>
+ 
